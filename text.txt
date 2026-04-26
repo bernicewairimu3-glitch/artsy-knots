@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artsy Knots — Handmade Creativity by Bernice Wairimu</title>
+  <meta name="description" content="Handmade tufted rugs, art pieces, and resin creations. Custom commissions available.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+```
+:root {
+  --primary-blue: #7fb3d5;
+  --light-blue: #d6eaf8;
+  --cream: #faf7f2;
+  --white: #ffffff;
+  --dark: #2c3e50;
+  --text-muted: #7f8c8d;
+  --accent: #5dade2;
+  --pink: #f5a3d8;
+  --light-pink: #f9d5e8;
+  --dark-pink: #e97dc9;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--white);
+  color: var(--dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--light-pink) 35%, var(--white) 65%, var(--light-pink) 85%, var(--light-blue) 100%);
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(127, 179, 213, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-pink);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-svg {
+  flex-shrink: 0;
+  animation: logoSpin 20s linear infinite;
+}
+
+@keyframes logoSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+nav a {
+  font-size: 0.95rem;
+  color: var(--dark);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  color: var(--dark-pink);
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--dark-pink);
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+.admin-btn {
+  background: var(--dark-pink);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.admin-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(233, 125, 201, 0.3);
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 25%, var(--light-pink) 50%, var(--white) 75%, var(--light-blue) 100%);
+  color: var(--white);
+  padding: 100px 5%;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  opacity: 0.95;
+  line-height: 1.7;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--accent);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* SECTION */
+section {
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  margin-bottom: 50px;
+  color: var(--dark);
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--dark-pink);
+  border-radius: 2px;
+}
+
+h3 {
+  font-size: 1.3rem;
+  color: var(--dark);
+  margin-bottom: 15px;
+}
+
+/* ABOUT SECTION */
+#about {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 25%, var(--light-pink) 50%, var(--white) 75%, var(--light-blue) 100%);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.about-content h3 {
+  color: var(--dark-pink);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.about-content p {
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.about-img {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: var(--light-blue);
+}
+
+.about-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-img::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: linear-gradient(135deg, var(--light-pink), var(--dark-pink));
+  border-radius: 12px;
+  z-index: -1;
+}
+
+/* GALLERY */
+#gallery {
+  background: var(--white);
+}
+
+/* FILTER BUTTONS */
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--cream);
+  color: var(--dark);
+  border: 2px solid transparent;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-btn:hover {
+  border-color: var(--dark-pink);
+  background: var(--light-pink);
+  color: var(--dark-pink);
+}
+
+.filter-btn.active {
+  background: var(--dark-pink);
+  color: white;
+  border-color: var(--dark-pink);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.gallery-item {
+  background: var(--cream);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 163, 216, 0.15);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.gallery-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(245, 163, 216, 0.25);
+}
+
+.gallery-item-img {
+  width: 100%;
+  height: 250px;
+  background: linear-gradient(135deg, var(--light-pink), var(--cream));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.like-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(233, 125, 201, 0.9);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.gallery-item-content {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery-item-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.gallery-item-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  flex-grow: 1;
+}
+
+.gallery-item-price {
+  font-weight: 600;
+  color: var(--dark-pink);
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.gallery-item-category {
+  display: inline-block;
+  background: var(--light-pink);
+  color: var(--dark-pink);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.gallery-item-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.like-btn {
+  flex: 1;
+  padding: 10px;
+  background: var(--light-pink);
+  color: var(--dark-pink);
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.like-btn:hover {
+  background: var(--dark-pink);
+  color: white;
+  transform: scale(1.05);
+}
+
+.like-btn.liked {
+  background: var(--dark-pink);
+  color: white;
+}
+
+.whatsapp-btn {
+  flex: 1;
+  padding: 10px;
+  background: var(--dark-pink);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(233, 125, 201, 0.3);
+}
+
+.gallery-item.hidden {
+  display: none;
+}
+
+/* MISSION STATEMENT */
+.mission-box {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--white) 30%, var(--light-pink) 60%, var(--white) 85%, var(--light-blue) 100%);
+  padding: 50px;
+  border-radius: 12px;
+  text-align: center;
+  border-left: 4px solid var(--dark-pink);
+}
+
+.mission-box h3 {
+  color: var(--dark-pink);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.mission-box p {
+  color: var(--dark);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* CONTACT SECTION */
+#contact {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--pink) 25%, var(--white) 50%, var(--pink) 75%, var(--light-blue) 100%);
+  color: var(--white);
+  text-align: center;
+}
+
+#contact h2 {
+  color: var(--white);
+}
+
+#contact h2::after {
+  background: var(--white);
+}
+
+.contact-info {
+  margin: 40px 0;
+  font-size: 1.1rem;
+}
+
+.contact-info p {
+  margin-bottom: 15px;
+}
+
+.contact-info strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.contact-info a {
+  color: var(--cream);
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+
+.contact-info a:hover {
+  opacity: 0.8;
+}
+
+/* SOCIAL LINKS */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.social-link {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.social-link:hover {
+  background: var(--white);
+  color: var(--primary-blue);
+  border-color: var(--white);
+}
+
+/* FOOTER */
+footer {
+  background: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 30px 5%;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  position: relative;
+}
+
+/* MODAL STYLES */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: var(--white);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 90%;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--light-pink);
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: var(--dark-pink);
+  font-size: 1.8rem;
+}
+
+.close-btn {
+  background: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: var(--dark-pink);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--light-pink);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--dark-pink);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 12px 24px;
+  background: var(--dark-pink);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 125, 201, 0.3);
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 12px 24px;
+  background: var(--cream);
+  color: var(--dark);
+  border: 2px solid var(--light-pink);
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--light-pink);
+}
+
+/* ADMIN PANEL STYLES */
+.admin-panel {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  z-index: 2000;
+  overflow-y: auto;
+  animation: slideInRight 0.3s ease;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.admin-panel.show {
+  display: block;
+}
+
+.admin-header {
+  background: linear-gradient(135deg, var(--light-pink), var(--dark-pink));
+  color: white;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(233, 125, 201, 0.2);
+}
+
+.admin-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: white;
+  color: var(--dark-pink);
+}
+
+.admin-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 5%;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid var(--light-pink);
+  padding-bottom: 15px;
+}
+
+.admin-tab {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  font-size: 0.95rem;
+}
+
+.admin-tab.active {
+  color: var(--dark-pink);
+  border-bottom-color: var(--dark-pink);
+}
+
+.admin-tab:hover {
+  color: var(--dark);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, var(--light-blue), var(--light-pink));
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(245, 163, 216, 0.15);
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--dark-pink);
+}
+
+.products-list {
+  background: var(--cream);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-item {
+  display: grid;
+  grid-template-columns: 100px 1fr 150px 150px 100px;
+  gap: 20px;
+  padding: 20px;
+  border-bottom: 1px solid var(--light-pink);
+  align-items: center;
+}
+
+.product-item:last-child {
+  border-bottom: none;
+}
+
+.product-item-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--light-blue);
+}
+
+.product-item-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-item-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 1rem;
+}
+
+.product-item-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.product-item-likes {
+  text-align: center;
+  font-weight: 600;
+  color: var(--dark-pink);
+  font-size: 1.1rem;
+}
+
+.product-item-price {
+  text-align: center;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.product-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.product-item-actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.edit-product-btn {
+  background: var(--accent);
+  color: white;
+}
+
+.edit-product-btn:hover {
+  background: var(--primary-blue);
+}
+
+.delete-product-btn {
+  background: #e74c3c;
+  color: white;
+}
+
+.delete-product-btn:hover {
+  background: #c0392b;
+}
+
+.add-product-btn {
+  padding: 14px 28px;
+  background: var(--dark-pink);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.add-product-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(233, 125, 201, 0.3);
+}
+
+.trending-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: var(--cream);
+  border-radius: 12px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.trending-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.trending-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trending-info {
+  flex: 1;
+}
+
+.trending-info h3 {
+  margin: 0 0 10px 0;
+}
+
+.trending-likes {
+  font-size: 1.2rem;
+  color: var(--dark-pink);
+  font-weight: 700;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+}
+
+.loading::after {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--light-pink);
+  border-top-color: var(--dark-pink);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.success-message {
+  background: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  border: 1px solid #c3e6cb;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-img {
+    aspect-ratio: 4/3;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .mission-box {
+    padding: 30px;
+  }
+
+  .social-links {
+    gap: 12px;
+  }
+
+  .social-link {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .product-item {
+    grid-template-columns: 80px 1fr 80px;
+    gap: 15px;
+  }
+
+  .product-item-price,
+  .product-item-actions {
+    display: none;
+  }
+
+  .admin-tabs {
+    flex-wrap: wrap;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  section {
+    padding: 50px 5%;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+
+  .hero {
+    padding: 60px 5%;
+    min-height: 50vh;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item-img {
+    height: 200px;
+  }
+
+  .product-item {
+    grid-template-columns: 1fr;
+  }
+
+  .product-item-img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .admin-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeInUp 0.6s ease-out;
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="logo">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+        <path d="M14 2L17.09 10.26H26L19.45 15.51L22.54 23.77L14 18.52L5.46 23.77L8.55 15.51L2 10.26H10.91L14 2Z" fill="#e97dc9" stroke="#7fb3d5" stroke-width="0.5"/>
+        <circle cx="14" cy="12.5" r="1.5" fill="#7fb3d5"/>
+      </svg>
+      <span>ARTSY KNOTS</span>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#gallery">Catalogues</a>
+      <a href="#contact">Contact</a>
+      <button class="admin-btn" onclick="openLoginModal()">🔐 Admin</button>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <h1>Handmade Creativity</h1>
+    <p>Tufted rugs, art pieces, and resin creations that celebrate individuality and emotion.</p>
+    <a href="#gallery" class="cta-button">Explore Works →</a>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <h2>About the Creator</h2>
+    <div class="about-grid">
+      <div class="about-content">
+        <h3>Bernice Wairimu Ngugi</h3>
+        <p>Creative director and founder of Artsy Knots, Bernice transforms raw materials into emotional expressions. Each piece is a conversation between vision and craft.</p>
+        <p>With a passion for data science and creativity, Bernice builds each project with intention—combining analytical thinking with artistic freedom.</p>
+        <p>Every work celebrates individuality, resilience, and the beauty of imperfection. Custom commissions welcome.</p>
+      </div>
+      <div class="about-img">
+        <img src="https://via.placeholder.com/400x400/d6eaf8/7fb3d5?text=Bernice+Wairimu" alt="Bernice Wairimu Ngugi, Creative Director">
+      </div>
+    </div>
+
+```
+<div class="mission-box">
+  <h3>Our Mission</h3>
+  <p>"To create handmade pieces that tell stories. To celebrate the hands that make, the eyes that see, and the hearts that feel. Art isn't just decoration—it's evidence of humanity."</p>
+</div>
+```
+
+  </section>
+
+  <!-- PHILOSOPHY SECTION -->
+
+  <section id="philosophy" style="background: linear-gradient(135deg, var(--white) 0%, var(--light-pink) 100%); padding: 80px 5%;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <h2>Why I Create</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 60px;">
+        <div>
+          <h3 style="color: var(--dark-pink); margin-top: 0;">Learning Every Day</h3>
+          <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+            This year I decided to try and learn new skills as often as I can. Growth is the heartbeat of creativity. Every design teaches me something new. Every technique pushes me further.
+          </p>
+          <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; font-style: italic; margin-top: 25px; padding: 20px; background: rgba(245, 163, 216, 0.2); border-left: 4px solid var(--dark-pink); border-radius: 6px;">
+            "And that's how I found myself sleeping at 2:30am because I couldn't stop myself from trying different designs."
+          </p>
+          <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-top: 20px;">
+            When you love what you do, time disappears. Every piece is a chance to explore, experiment, and evolve. That's the passion that drives Artsy Knots.
+          </p>
+        </div>
+        <div style="background: linear-gradient(135deg, var(--light-pink), var(--cream)); padding: 40px; border-radius: 12px; border: 2px solid rgba(233, 125, 201, 0.2);">
+          <div style="font-size: 3.5rem; margin-bottom: 20px; line-height: 1;">✨</div>
+          <h4 style="color: var(--dark-pink); font-size: 1.3rem; margin-bottom: 15px;">What I Believe</h4>
+          <ul style="list-style: none; color: var(--dark); line-height: 2;">
+            <li>✓ Creativity has no limits</li>
+            <li>✓ Handmade is soulful</li>
+            <li>✓ Every design tells a story</li>
+            <li>✓ Growth through experimentation</li>
+            <li>✓ Passion over perfection</li>
+            <li>✓ Art heals and inspires</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+
+  <section id="gallery">
+    <h2>Our Catalogues</h2>
+
+```
+<div style="text-align: center; margin-bottom: 50px;">
+  <button onclick="filterProducts('all', this)" class="filter-btn active">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 10.26H24L17.45 15.51L20.54 23.77L12 18.52L3.46 23.77L6.55 15.51L0 10.26H8.91L12 2Z"/></svg>
+    All Works
+  </button>
+  <button onclick="filterProducts('matwork', this)" class="filter-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M6 4v16M12 4v16M18 4v16M4 6h16M4 12h16M4 18h16"/></svg>
+    Matworks
+  </button>
+  <button onclick="filterProducts('canvas', this)" class="filter-btn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"/><polyline points="21 15 16 10 5 21"/></svg>
+    Canvas Art
+  </button>
+</div>
+
+<div class="gallery-grid" id="galleryGrid">
+  <!-- Products loaded dynamically from Firebase -->
+</div>
+```
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <div class="contact-info">
+      <p><strong>Phone:</strong> <a href="tel:+254706189808">+254 706 189 808</a></p>
+      <p><strong>Custom Commissions Welcome</strong></p>
+    </div>
+
+```
+<div class="social-links">
+  <a href="https://instagram.com/bernicewairimu" class="social-link" target="_blank" rel="noopener">Instagram @bernicewairimu</a>
+  <a href="https://tiktok.com/@bernicewairimu706" class="social-link" target="_blank" rel="noopener">TikTok @bernicewairimu706</a>
+</div>
+```
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <p>© 2025 Artsy Knots by Bernice Wairimu Ngugi. All rights reserved.</p>
+    <p style="margin-top: 10px; opacity: 0.7;">Handmade with creativity and intention.</p>
+  </footer>
+
+  <!-- LOGIN MODAL -->
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🔐 Admin Login</h2>
+        <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+      </div>
+      <form onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="bernice.wairimu3@gmail.com" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" required>
+        </div>
+        <div id="loginError" class="error-message" style="display: none;"></div>
+        <div class="btn-group">
+          <button type="submit" class="btn-primary">Login</button>
+          <button type="button" class="btn-secondary" onclick="closeLoginModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+
+  <div id="adminPanel" class="admin-panel">
+    <div class="admin-header">
+      <h1>👑 Admin Dashboard</h1>
+      <button class="logout-btn" onclick="handleLogout()">Logout</button>
+    </div>
+
+```
+<div class="admin-content">
+  <div class="admin-tabs">
+    <button class="admin-tab active" onclick="switchAdminTab('dashboard')">📊 Dashboard</button>
+    <button class="admin-tab" onclick="switchAdminTab('products')">🎨 Products</button>
+    <button class="admin-tab" onclick="switchAdminTab('trending')">🔥 Trending</button>
+  </div>
+
+  <!-- DASHBOARD TAB -->
+  <div id="dashboard" class="tab-content active">
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Views</div>
+        <div class="stat-number" id="totalViews">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Likes</div>
+        <div class="stat-number" id="totalLikes">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Products</div>
+        <div class="stat-number" id="totalProducts">0</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS TAB -->
+  <div id="products" class="tab-content">
+    <button class="add-product-btn" onclick="openAddProductModal()">+ Add New Artwork</button>
+    <div id="productsList" class="products-list">
+      <div class="loading">Loading products...</div>
+    </div>
+  </div>
+
+  <!-- TRENDING TAB -->
+  <div id="trending" class="tab-content">
+    <div id="trendingList">
+      <div class="loading">Loading trending artworks...</div>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+
+  <!-- ADD/EDIT PRODUCT MODAL -->
+
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="productModalTitle">Add Artwork</h2>
+        <button class="close-btn" onclick="closeProductModal()">&times;</button>
+      </div>
+      <form onsubmit="handleSaveProduct(event)">
+        <div class="form-group">
+          <label for="productTitle">Title</label>
+          <input type="text" id="productTitle" placeholder="e.g., Vibrant Waves" required>
+        </div>
+        <div class="form-group">
+          <label for="productDesc">Description</label>
+          <textarea id="productDesc" placeholder="Describe your artwork..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="productPrice">Price (KES)</label>
+          <input type="number" id="productPrice" min="2000" max="4000" placeholder="2000" required>
+        </div>
+        <div class="form-group">
+          <label for="productCategory">Category</label>
+          <select id="productCategory" required>
+            <option value="">Select a category</option>
+            <option value="matwork">Matwork</option>
+            <option value="canvas">Canvas Art</option>
+            <option value="commission">Commission</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="productImage">Image URL</label>
+          <input type="url" id="productImage" placeholder="https://example.com/image.jpg" required>
+        </div>
+        <div id="productError" class="error-message" style="display: none;"></div>
+        <div class="btn-group">
+          <button type="submit" class="btn-primary" id="productSubmitBtn">Save Artwork</button>
+          <button type="button" class="btn-secondary" onclick="closeProductModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Firebase SDK -->
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js"></script>
+
+  <script>
+    // ======================
+    // FIREBASE CONFIGURATION
+    // ======================
+    const firebaseConfig = {
+      apiKey: "AIzaSyDUUVJ-your-api-key-here",
+      authDomain: "your-project-id.firebaseapp.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project-id.appspot.com",
+      messagingSenderId: "your-messaging-id",
+      appId: "your-app-id",
+      measurementId: "G-your-measurement-id"
+    };
+
+    // ======================
+    // FIREBASE INITIALIZATION
+    // ======================
+    let firebase_initialized = false;
+
+    try {
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      firebase_initialized = true;
+      console.log('✅ Firebase initialized successfully');
+    } catch (error) {
+      firebase_initialized = false;
+      console.error('❌ Firebase initialization error:', error);
+      console.log('⚠️ Make sure to update Firebase config in index.html');
+    }
+
+    // ======================
+    // STATE MANAGEMENT
+    // ======================
+    let currentUser = null;
+    let editingProductId = null;
+    let pageViews = 0;
+
+    // ======================
+    // PAGE VIEW TRACKING
+    // ======================
+    function checkFirebaseReady() {
+      if (!firebase_initialized) {
+        console.warn('⚠️ Firebase not initialized. Update the Firebase config in index.html');
+        return false;
+      }
+      return true;
+    }
+
+    async function incrementPageViews() {
+      if (!checkFirebaseReady()) return;
+      
+      try {
+        const statsRef = db.collection('websites').doc('artsy-knots').collection('analytics').doc('stats');
+        const doc = await statsRef.get();
+        
+        if (doc.exists) {
+          await statsRef.update({
+            totalViews: (doc.data().totalViews || 0) + 1
+          });
+        } else {
+          await statsRef.set({
+            totalViews: 1,
+            totalLikes: 0,
+            lastUpdated: new Date()
+          });
+        }
+      } catch (error) {
+        console.log('Analytics tracking (optional):', error.message);
+      }
+    }
+
+    // ======================
+    // AUTHENTICATION
+    // ======================
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.add('show');
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.remove('show');
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPassword').value = '';
+      document.getElementById('loginError').style.display = 'none';
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+      const errorDiv = document.getElementById('loginError');
+
+      try {
+        const result = await auth.signInWithEmailAndPassword(email, password);
+        currentUser = result.user;
+        closeLoginModal();
+        openAdminPanel();
+        loadAdminData();
+      } catch (error) {
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = 'Invalid email or password';
+        console.error('Login error:', error);
+      }
+    }
+
+    function handleLogout() {
+      auth.signOut().then(() => {
+        currentUser = null;
+        document.getElementById('adminPanel').classList.remove('show');
+        document.getElementById('loginEmail').value = '';
+        document.getElementById('loginPassword').value = '';
+      });
+    }
+
+    function openAdminPanel() {
+      document.getElementById('adminPanel').classList.add('show');
+    }
+
+    // ======================
+    // ADMIN TABS
+    // ======================
+    function switchAdminTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      // Remove active class from all buttons
+      document.querySelectorAll('.admin-tab').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+
+      // Load data when switching tabs
+      if (tabName === 'products') {
+        loadProductsList();
+      } else if (tabName === 'trending') {
+        loadTrendingProducts();
+      }
+    }
+
+    // ======================
+    // LOAD ADMIN DATA
+    // ======================
+    async function loadAdminData() {
+      try {
+        // Load stats
+        const statsRef = db.collection('websites').doc('artsy-knots').collection('analytics').doc('stats');
+        statsRef.onSnapshot(doc => {
+          if (doc.exists) {
+            document.getElementById('totalViews').textContent = doc.data().totalViews || 0;
+            document.getElementById('totalLikes').textContent = doc.data().totalLikes || 0;
+          }
+        });
+
+        // Load products count
+        const productsRef = db.collection('websites').doc('artsy-knots').collection('products');
+        productsRef.onSnapshot(snapshot => {
+          document.getElementById('totalProducts').textContent = snapshot.size;
+        });
+      } catch (error) {
+        console.error('Error loading admin data:', error);
+      }
+    }
+
+    // ======================
+    // PRODUCTS MANAGEMENT
+    // ======================
+    async function loadProductsList() {
+      const listDiv = document.getElementById('productsList');
+      listDiv.innerHTML = '<div class="loading">Loading products...</div>';
+
+      try {
+        const querySnapshot = await db.collection('websites').doc('artsy-knots').collection('products').get();
+        
+        if (querySnapshot.empty) {
+          listDiv.innerHTML = '<p style="padding: 40px; text-align: center; color: var(--text-muted);">No products yet. Create your first artwork!</p>';
+          return;
+        }
+
+        let html = '';
+        querySnapshot.forEach(doc => {
+          const product = doc.data();
+          html += `
+            <div class="product-item">
+              <div class="product-item-img">
+                <img src="${product.image}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/100x100'">
+              </div>
+              <div class="product-item-info">
+                <h3>${product.title}</h3>
+                <p>${product.category}</p>
+              </div>
+              <div class="product-item-likes">${product.likes || 0} ❤️</div>
+              <div class="product-item-price">${product.price} KES</div>
+              <div class="product-item-actions">
+                <button class="edit-product-btn" onclick="openEditProductModal('${doc.id}')">Edit</button>
+                <button class="delete-product-btn" onclick="deleteProduct('${doc.id}')">Delete</button>
+              </div>
+            </div>
+          `;
+        });
+        listDiv.innerHTML = html;
+      } catch (error) {
+        listDiv.innerHTML = '<div class="error-message">Error loading products. Make sure Firebase is configured.</div>';
+        console.error('Error:', error);
+      }
+    }
+
+    async function loadTrendingProducts() {
+      const listDiv = document.getElementById('trendingList');
+      listDiv.innerHTML = '<div class="loading">Loading trending artworks...</div>';
+
+      try {
+        const querySnapshot = await db.collection('websites').doc('artsy-knots').collection('products')
+          .orderBy('likes', 'desc')
+          .limit(5)
+          .get();
+
+        if (querySnapshot.empty) {
+          listDiv.innerHTML = '<p style="padding: 40px; text-align: center; color: var(--text-muted);">No artworks yet.</p>';
+          return;
+        }
+
+        let html = '';
+        let rank = 1;
+        querySnapshot.forEach(doc => {
+          const product = doc.data();
+          html += `
+            <div class="trending-item">
+              <div style="font-size: 2rem; font-weight: 700; color: var(--dark-pink); width: 50px; text-align: center;">#${rank}</div>
+              <div class="trending-img">
+                <img src="${product.image}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/100x100'">
+              </div>
+              <div class="trending-info">
+                <h3>${product.title}</h3>
+                <p style="color: var(--text-muted); margin: 5px 0;">${product.price} KES</p>
+                <div class="trending-likes">${product.likes || 0} ❤️ Likes</div>
+              </div>
+            </div>
+          `;
+          rank++;
+        });
+        listDiv.innerHTML = html;
+      } catch (error) {
+        listDiv.innerHTML = '<div class="error-message">Error loading trending. Make sure Firebase is configured.</div>';
+        console.error('Error:', error);
+      }
+    }
+
+    function openAddProductModal() {
+      editingProductId = null;
+      document.getElementById('productModalTitle').textContent = 'Add Artwork';
+      document.getElementById('productSubmitBtn').textContent = 'Add Artwork';
+      document.getElementById('productTitle').value = '';
+      document.getElementById('productDesc').value = '';
+      document.getElementById('productPrice').value = '';
+      document.getElementById('productCategory').value = '';
+      document.getElementById('productImage').value = '';
+      document.getElementById('productError').style.display = 'none';
+      document.getElementById('productModal').classList.add('show');
+    }
+
+    async function openEditProductModal(productId) {
+      try {
+        const doc = await db.collection('websites').doc('artsy-knots').collection('products').doc(productId).get();
+        
+        if (doc.exists) {
+          const product = doc.data();
+          editingProductId = productId;
+          document.getElementById('productModalTitle').textContent = 'Edit Artwork';
+          document.getElementById('productSubmitBtn').textContent = 'Update Artwork';
+          document.getElementById('productTitle').value = product.title;
+          document.getElementById('productDesc').value = product.description;
+          document.getElementById('productPrice').value = product.price;
+          document.getElementById('productCategory').value = product.category;
+          document.getElementById('productImage').value = product.image;
+          document.getElementById('productError').style.display = 'none';
+          document.getElementById('productModal').classList.add('show');
+        }
+      } catch (error) {
+        console.error('Error loading product:', error);
+      }
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('show');
+      editingProductId = null;
+    }
+
+    async function handleSaveProduct(e) {
+      e.preventDefault();
+
+      if (!currentUser) {
+        alert('Please log in first');
+        return;
+      }
+
+      const title = document.getElementById('productTitle').value;
+      const description = document.getElementById('productDesc').value;
+      const price = parseInt(document.getElementById('productPrice').value);
+      const category = document.getElementById('productCategory').value;
+      const image = document.getElementById('productImage').value;
+      const errorDiv = document.getElementById('productError');
+
+      // Validation
+      if (price < 2000 || price > 4000) {
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = 'Price must be between 2,000 and 4,000 KES';
+        return;
+      }
+
+      try {
+        const productData = {
+          title,
+          description,
+          price,
+          category,
+          image,
+          updatedAt: new Date()
+        };
+
+        if (editingProductId) {
+          // Update existing product
+          await db.collection('websites').doc('artsy-knots').collection('products').doc(editingProductId).update(productData);
+        } else {
+          // Add new product with likes initialized to 0
+          productData.likes = 0;
+          productData.createdAt = new Date();
+          await db.collection('websites').doc('artsy-knots').collection('products').add(productData);
+        }
+
+        closeProductModal();
+        loadProductsList();
+        loadGallery();
+        loadAdminData();
+      } catch (error) {
+        errorDiv.style.display = 'block';
+        errorDiv.textContent = 'Error saving product. Make sure Firebase is configured.';
+        console.error('Error:', error);
+      }
+    }
+
+    async function deleteProduct(productId) {
+      if (!confirm('Are you sure you want to delete this artwork?')) {
+        return;
+      }
+
+      try {
+        await db.collection('websites').doc('artsy-knots').collection('products').doc(productId).delete();
+        loadProductsList();
+        loadGallery();
+        loadAdminData();
+      } catch (error) {
+        alert('Error deleting product. Make sure Firebase is configured.');
+        console.error('Error:', error);
+      }
+    }
+
+    // ======================
+    // GALLERY (PUBLIC)
+    // ======================
+    async function loadGallery() {
+      const galleryGrid = document.getElementById('galleryGrid');
+      galleryGrid.innerHTML = '<div class="loading">Loading gallery...</div>';
+
+      try {
+        const querySnapshot = await db.collection('websites').doc('artsy-knots').collection('products').get();
+
+        if (querySnapshot.empty) {
+          galleryGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">Gallery coming soon...</p>';
+          return;
+        }
+
+        let html = '';
+        querySnapshot.forEach(doc => {
+          const product = doc.data();
+          const productId = doc.id;
+          const likes = product.likes || 0;
+
+          html += `
+            <div class="gallery-item" data-category="${product.category}">
+              <div class="gallery-item-img">
+                <img src="${product.image}" alt="${product.title}" onerror="this.src='https://via.placeholder.com/400x300'">
+                <div class="like-badge">${likes} ❤️</div>
+              </div>
+              <div class="gallery-item-content">
+                <div class="gallery-item-title">${product.title}</div>
+                <p class="gallery-item-desc">${product.description}</p>
+                <div class="gallery-item-price">${product.price} KES</div>
+                <span class="gallery-item-category">${product.category}</span>
+                <div class="gallery-item-actions">
+                  <button class="like-btn" onclick="likeProduct('${productId}', this)" id="like-${productId}">
+                    ❤️ Like
+                  </button>
+                  <button class="whatsapp-btn" onclick="inquireProduct('${product.title}')">
+                    WhatsApp me
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        galleryGrid.innerHTML = html;
+      } catch (error) {
+        galleryGrid.innerHTML = '<div class="error-message" style="grid-column: 1/-1;">Error loading gallery. Make sure Firebase is configured.</div>';
+        console.error('Error:', error);
+      }
+    }
+
+    async function likeProduct(productId, button) {
+      try {
+        const docRef = db.collection('websites').doc('artsy-knots').collection('products').doc(productId);
+        const doc = await docRef.get();
+
+        if (doc.exists) {
+          const currentLikes = doc.data().likes || 0;
+          await docRef.update({
+            likes: currentLikes + 1
+          });
+
+          // Update button UI
+          button.classList.add('liked');
+          button.disabled = true;
+          button.textContent = '❤️ Liked!';
+
+          // Update analytics
+          const statsRef = db.collection('websites').doc('artsy-knots').collection('analytics').doc('stats');
+          const statsDoc = await statsRef.get();
+          if (statsDoc.exists) {
+            await statsRef.update({
+              totalLikes: (statsDoc.data().totalLikes || 0) + 1
+            });
+          }
+
+          // Reload admin data if admin is viewing
+          if (currentUser) {
+            loadAdminData();
+          }
+        }
+      } catch (error) {
+        console.error('Error liking product:', error);
+      }
+    }
+
+    function inquireProduct(productName) {
+      const message = `Hi Bernice! I'm interested in "${productName}". Can you provide more details?`;
+      const whatsappNumber = '254706189808';
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappURL, '_blank');
+    }
+
+    function filterProducts(category, button) {
+      const items = document.querySelectorAll('.gallery-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      if (button) {
+        button.classList.add('active');
+      }
+
+      items.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (category === 'all' || itemCategory === category) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+    }
+
+    // ======================
+    // INITIALIZE ON LOAD
+    // ======================
+    window.addEventListener('load', () => {
+      incrementPageViews();
+      loadGallery();
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+      const loginModal = document.getElementById('loginModal');
+      const productModal = document.getElementById('productModal');
+
+      if (e.target === loginModal) {
+        closeLoginModal();
+      }
+      if (e.target === productModal) {
+        closeProductModal();
+      }
+    });
+  </script>
+
+</body>
+</html>
