@@ -136,6 +136,7 @@
   <div class="console-head">
     <div class="con-ttl">
       <span class="con-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 12c2.2 0 4-2 4-4.5S14.2 3 12 3 8 5 8 7.5 9.8 12 12 12z"/><path d="M5 21c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg></span>
+      <div id="consoleAvatar" style="width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--glass-stroke);background:var(--accent);display:grid;place-items:center;font-size:.9rem"></div>
       <div><h3>Studio Console</h3><div class="con-sub" id="consoleSub">Studio mode · changes save instantly</div></div>
     </div>
     <button class="x-btn" onclick="Console.close()" aria-label="Close console">&times;</button>
@@ -194,6 +195,8 @@
       <div class="field"><label>World &amp; view <span class="hint">Changes are live as you tap — watch the page behind.</span></label><div class="opt-grid" id="viewOpts"></div></div>
       <div class="field"><label>Gallery density</label><div class="opt-grid" id="densityOpts"></div></div>
       <div class="field"><label>Corner style</label><div class="opt-grid" id="shapeOpts"></div></div>
+      <div class="field"><label>Background style</label><div class="opt-grid" id="bgOpts"></div></div>
+      <div class="field"><label>Intro transition style</label><div class="opt-grid" id="transitionOpts"></div></div>
     </div>
     <!-- BRANDING -->
     <div class="cpanel" data-panel="branding">
@@ -228,6 +231,7 @@
     <div class="cpanel" data-panel="social">
       <div class="field"><label>WhatsApp <span class="hint">Country code + number. e.g. 254706189808</span></label><input class="input" id="f_whatsapp" oninput="Edit.contact()"></div>
       <div class="field"><label>Phone</label><input class="input" id="f_phone" oninput="Edit.contact()"></div>
+      <div class="field"><label>SMS number <span class="hint">For SMS order confirmation. Can be same as phone.</span></label><input class="input" id="f_sms" oninput="Edit.contact()"></div>
       <div class="field"><label>Email</label><input class="input" id="f_email" oninput="Edit.contact()"></div>
       <div class="field"><label>Instagram</label><input class="input" id="f_instagram" oninput="Edit.contact()"></div>
       <div class="field"><label>TikTok</label><input class="input" id="f_tiktok" oninput="Edit.contact()"></div>
@@ -298,7 +302,7 @@ service cloud.firestore {
 
 <!-- CART -->
 <aside class="cart" id="cart" role="dialog" aria-modal="true" aria-label="Shopping bag">
-  <div class="cart-head"><h3>Your bag</h3><button class="x-btn" onclick="Cart.close()" aria-label="Close cart">&times;</button></div>
+  <div class="cart-head"><h3>Your Cart</h3><button class="x-btn" onclick="Cart.close()" aria-label="Close cart">&times;</button></div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-foot">
     <div class="cart-total"><span>Total</span><strong id="cartTotal">—</strong></div>

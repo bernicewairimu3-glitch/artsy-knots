@@ -83,8 +83,8 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 .sort-btn{display:inline-flex;align-items:center;gap:7px;padding:11px 18px;border-radius:999px;font-weight:600;font-size:.88rem;color:var(--ink);background:var(--glass-fill-strong);border:1px solid var(--glass-stroke-soft);white-space:nowrap;transition:.25s}
 .sort-btn:hover{background:var(--accent);color:#fff}
 .sort-menu{position:relative}
-/* [UI-02] z-index fixed: 50 → 150 */
-.sort-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:150;min-width:200px;padding:8px;border-radius:18px;display:none;background:var(--glass-fill-strong);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glass-stroke);box-shadow:var(--glass-shadow)}
+/* [FIX-02] z-index 500 — above all cards/chips */
+.sort-pop{position:absolute;top:calc(100% + 8px);right:0;z-index:500;min-width:200px;padding:8px;border-radius:18px;display:none;background:var(--glass-fill-strong);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glass-stroke);box-shadow:var(--glass-shadow)}
 .sort-pop.show{display:block;animation:fadeUp .25s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .sort-pop button{display:flex;width:100%;align-items:center;gap:9px;padding:11px 13px;border-radius:12px;font-size:.9rem;font-weight:500;color:var(--ink);text-align:left;transition:.2s}
@@ -307,15 +307,53 @@ body[data-shape="round"]{--radius:36px}
 /* ─ [P-07] LOW-PERF DEVICE ─ */
 body[data-lowperf] .card{backdrop-filter:none;background:var(--glass-fill-strong)}
 body[data-lowperf] #caustics{display:none}
-/* ─ [ANIM-02] INTRO ANIMATION ─ */
-.intro-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:linear-gradient(135deg,var(--bg-1) 0%,var(--bg-3) 100%);animation:introFadeOut .6s ease-out forwards;animation-delay:4.5s}
-@keyframes introFadeOut{to{opacity:0;pointer-events:none}}
+/* ─ [FIX-05] INTRO ANIMATION ─ */
+.intro-screen{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:linear-gradient(135deg,var(--bg-1) 0%,var(--bg-3) 100%)}
 .intro-content{text-align:center;display:flex;flex-direction:column;align-items:center;gap:40px}
 .logo-container{position:relative;width:140px;height:140px;display:grid;place-items:center}
-.rotating-logo{width:100%;height:100%;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 20px 60px -12px var(--accent);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:3rem;color:#fff;animation:rotateSlow 3s ease-in-out 1s forwards,rotateFast 1s ease-in-out 4s forwards}
+.rotating-logo{width:100%;height:100%;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent-2));box-shadow:0 20px 60px -12px var(--accent);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:3rem;color:#fff;animation:rotateSlow 3s ease-in-out .3s forwards,rotateFast 1s ease-in-out 3.8s forwards}
 @keyframes rotateSlow{from{transform:rotateZ(0deg) scale(.8);opacity:0}50%{transform:rotateZ(180deg) scale(1);opacity:1}to{transform:rotateZ(360deg) scale(1);opacity:1}}
 @keyframes rotateFast{from{transform:rotateZ(360deg) scale(1)}to{transform:rotateZ(720deg) scale(1)}}
-.intro-text{max-width:500px;opacity:0;animation:fadeInUp .8s ease-out forwards;animation-delay:2s}
+.intro-text{max-width:500px;opacity:0;animation:fadeInUp .8s ease-out forwards;animation-delay:1.8s}
 .welcome-text{font-family:var(--serif);font-size:clamp(1.2rem,3vw,2rem);line-height:1.4;color:var(--ink);margin:0;letter-spacing:-.5px}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.intro-screen{animation:none;opacity:0;pointer-events:none}.rotating-logo{animation:none}.intro-text{animation:none;opacity:1}}
+/* Transition-out styles */
+.intro-out-fade{animation:introFadeOut .7s ease forwards}
+@keyframes introFadeOut{to{opacity:0;pointer-events:none}}
+.intro-out-slideUp{animation:introSlideUp .7s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes introSlideUp{to{transform:translateY(-100%);opacity:0;pointer-events:none}}
+.intro-out-zoomOut{animation:introZoom .7s ease forwards}
+@keyframes introZoom{to{transform:scale(1.08);opacity:0;pointer-events:none}}
+.intro-out-blurDissolve{animation:introBlur .8s ease forwards}
+@keyframes introBlur{to{filter:blur(18px) brightness(2);opacity:0;pointer-events:none}}
+.intro-out-splitH{animation:introSplit .6s cubic-bezier(.4,0,.6,1) forwards}
+@keyframes introSplit{to{clip-path:inset(50% 0);opacity:0;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){.intro-screen{opacity:0;pointer-events:none}.rotating-logo{animation:none}.intro-text{animation:none;opacity:1}}
+/* ─ [FIX-08] VIDEO CARD ─ */
+.vid-meta-row{display:flex;gap:8px;align-items:center;margin-bottom:4px}
+.vid-provider{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);padding:2px 7px;border-radius:4px;background:rgba(31,182,214,.1);border:1px solid rgba(31,182,214,.2)}
+.vid-date{font-size:.74rem;color:var(--ink-soft)}
+.vid-title{font-family:var(--sans);font-weight:600;font-size:1rem;color:var(--ink);margin-bottom:4px;line-height:1.3}
+.vid-desc{font-size:.86rem;color:var(--ink-soft);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vid-stats{display:flex;gap:12px;font-size:.76rem;color:var(--ink-soft);margin-top:6px}
+.vid-cart-note{margin-top:16px;padding:14px;border-radius:14px;background:var(--glass-fill-strong);border:1px solid var(--glass-stroke-soft)}
+/* ─ [FIX-09] ORDER SHEET ─ */
+.order-sheet{position:fixed;inset:0;z-index:1200;display:flex;align-items:flex-end;justify-content:center;background:rgba(3,5,15,.52);backdrop-filter:blur(4px);animation:fadeIn .25s ease}
+.order-sheet-inner{width:min(500px,100vw);padding:28px 24px 32px;border-radius:24px 24px 0 0;border-bottom:none}
+.order-sheet-title{font-family:var(--serif);font-size:1.25rem;font-weight:600;color:var(--ink);margin-bottom:4px}
+.order-sheet-sub{font-size:.9rem;color:var(--ink-soft);margin-bottom:20px}
+.order-sheet-opts{display:flex;flex-direction:column;gap:10px}
+.order-opt{width:100%;padding:15px;border-radius:14px;font-size:1rem;font-weight:600;color:var(--ink);background:var(--glass-fill-strong);border:1px solid var(--glass-stroke);text-align:left;transition:.2s}
+.order-opt:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+/* ─ [FIX-11] BACKGROUND MODES ─ */
+body[data-bg="stars"] #waterField{background:radial-gradient(ellipse at 20% 50%,#0a1628 0%,#020408 100%)!important}
+body[data-bg="stars"] #caustics{display:none}
+body[data-bg="grid"] #waterField{background:var(--bg-3);background-image:linear-gradient(var(--glass-stroke-soft) 1px,transparent 1px),linear-gradient(90deg,var(--glass-stroke-soft) 1px,transparent 1px);background-size:40px 40px}
+body[data-bg="grid"] #caustics{display:none}
+body[data-bg="minimal"] #waterField{background:var(--bg-3)}
+body[data-bg="minimal"] #caustics{display:none}
+body[data-bg="ink"] #waterField{background:radial-gradient(120% 120% at 50% 0%,var(--bg-1) 0%,var(--bg-3) 100%)}
+/* ─ [FIX-12] SMOOTHNESS POLISH ─ */
+*,*::before,*::after{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{will-change:auto}
+.cpanel{display:none;animation:fadeUp .4s ease;transition:opacity .3s ease}.cpanel.active{display:block}
