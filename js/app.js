@@ -116,7 +116,7 @@ const Render={
   all(){this.theme();this.brand();this.copy();Gallery.apply();this.contact();document.getElementById('year').textContent=new Date().getFullYear();},
   theme(){const t=Store.state.theme,l=Store.state.layout,r=document.documentElement.style;
     r.setProperty('--accent',t.accent);r.setProperty('--accent-2',t.accent2);r.setProperty('--bg-1',t.bg1);r.setProperty('--bg-2',t.bg2);r.setProperty('--bg-3',t.bg3);
-    document.body.dataset.theme=t.dark?'dark':'light';document.body.dataset.density=l.density;document.body.dataset.shape=l.shape;document.body.dataset.view=l.view;
+    document.body.dataset.theme=t.dark?'dark':'light';document.body.dataset.density=l.density;document.body.dataset.shape=l.shape;document.body.dataset.view=l.view;document.body.dataset.bg=l.bgMode||'caustic';
     document.getElementById('themeColor').setAttribute('content',t.bg3);Views.syncFab();},
   brand(){const b=Store.state.brand;
     document.getElementById('brandName').innerHTML=esc(b.name)+'<small id="brandTag">'+esc(b.tag)+'</small>';
@@ -194,7 +194,7 @@ const Gallery={
     this.draw(list);},
   _sort(list){const s=this.sort;return list.sort(function(a,b){switch(s){case 'old':return (a.createdAt||0)-(b.createdAt||0);case 'price-asc':return a.price-b.price;case 'price-desc':return b.price-a.price;case 'likes':return (b.likes||0)-(a.likes||0);case 'views':return (b.views||0)-(a.views||0);case 'az':return a.title.localeCompare(b.title);default:return (b.createdAt||0)-(a.createdAt||0);}});},
   draw(items){const grid=document.getElementById('galleryGrid');
-    if(!items.length){grid.innerHTML='<div class="empty">No works match that yet — try another search, or tap the studio key and add a piece.</div>';return;}
+    if(!items.length){grid.style.opacity='1';grid.innerHTML='<div class="empty">No works match that yet — try another search, or tap the studio key and add a piece.</div>';return;}
     const liked=JSON.parse(localStorage.getItem('ak.liked')||'[]');
     const svgHeart='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>';
     const svgCall='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.09 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9.1 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
@@ -228,7 +228,9 @@ const Gallery={
         +'<div class="ph">'+media+play+'<span class="like-pill">'+svgHeart+' <span id="lk-'+esc(p.id)+'">'+(p.likes||0)+'</span></span></div>'
         +body+actions+'</article>';
     }).join('');
-    /* [FIX-12] Fade gallery on re-render */
+    /* [FIX-12] Fade gallery on re-render (skip if a modal is open) */
+    const modalOpen=!!document.querySelector('.overlay.show');
+    if(modalOpen){grid.innerHTML=html;grid.style.opacity='1';Physics.bindTilt();Reveal.scan();return;}
     grid.style.opacity='0';
     requestAnimationFrame(function(){grid.innerHTML=html;grid.style.transition='opacity .25s ease';grid.style.opacity='1';Physics.bindTilt();Reveal.scan();});},
   like(id){const liked=JSON.parse(localStorage.getItem('ak.liked')||'[]');const p=Store.state.products.find(function(x){return x.id===id;});if(!p)return;
@@ -412,6 +414,7 @@ async function compressImage(dataUrl,maxDim,quality){
       c.getContext('2d').drawImage(img,0,0,c.width,c.height);
       resolve(c.toDataURL('image/jpeg',quality));
     };
+    img.onerror=function(){resolve(dataUrl);};
     img.src=dataUrl;
   });
 }
@@ -585,7 +588,11 @@ const UI={
     UI.unlockScroll();
   },
   lockScroll(){document.body.style.overflow='hidden';document.body.style.touchAction='none';},
-  unlockScroll(){document.body.style.overflow='';document.body.style.touchAction='';},
+  unlockScroll(){
+    /* Only unlock if no overlay, drawer, or order sheet is still open */
+    if(document.querySelector('.overlay.show,.console.show,.cart.show,#orderPicker'))return;
+    document.body.style.overflow='';document.body.style.touchAction='';
+  },
   hap(p){try{if(Store.state&&Store.state.layout&&Store.state.layout.haptics&&navigator.vibrate)navigator.vibrate(p||10);}catch(e){}},
   toast(msg){const w=document.getElementById('toastWrap');const t=document.createElement('div');t.className='toast';t.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>'+msg;w.appendChild(t);setTimeout(function(){t.classList.add('out');setTimeout(function(){t.remove();},300);},2700);}
 };
@@ -705,9 +712,9 @@ function boot(){
   document.body.dataset.bg=Store.state.layout.bgMode||'caustic';
   if(Store.state.config.published&&Store.state.config.cloud&&Store.state.config.firebase)Settings.initFirebase(Store.state.config.firebase);
   Physics.neuralOn=(Store.state.layout.view!=='glass');
-  /* [ANIM-03] Run intro before page renders */
   initIntro();
   Render.all();
+  if(Store.state.layout.bgMode==='stars')Physics.initStars();
   Reveal.init();
   Physics.initRipple();
   Physics.initNeural();
