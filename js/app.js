@@ -71,6 +71,17 @@ let _saveDebounce;
 function dSave(){clearTimeout(_saveDebounce);_saveDebounce=setTimeout(()=>Store.save(),700);}
 
 const LS='artsyKnots.v2';
+
+/* ── FIREBASE CONFIG (auto-connects every device) ── */
+const FIREBASE_CONFIG={
+  apiKey:"AIzaSyD7-sFyoMdzpIKgc9d-5Yw25Ia5UjqN_Es",
+  authDomain:"artsy-knots.firebaseapp.com",
+  projectId:"artsy-knots",
+  storageBucket:"artsy-knots.firebasestorage.app",
+  messagingSenderId:"462420752723",
+  appId:"1:462420752723:web:4398eaafa9e2771d409a6",
+  measurementId:"G-8Z8RLHGB9X"
+};
 const DEFAULTS={
   brand:{name:'Artsy Knots',tag:'handmade studio',logoUrl:'',logoLetter:'A',footMark:'Artsy Knots'},
   theme:{palette:'lagoon',dark:false,accent:'#1fb6d6',accent2:'#0e7ea3',bg1:'#dff3fa',bg2:'#bfe9f5',bg3:'#eafaff'},
@@ -106,7 +117,14 @@ const Store={
   save(){try{localStorage.setItem(LS,JSON.stringify(this.state));}catch(e){UI.toast('Storage full — could not save.');}if(this.state.config.cloud&&this.fb)this.cloudSave();},
   exportData(){const b=new Blob([JSON.stringify(this.state,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='artsy-knots-backup.json';a.click();UI.toast('Backup downloaded');UI.hap();},
   importData(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{this.state=this._mg(DEFAULTS,JSON.parse(r.result));this.save();Render.all();Console.populate();UI.toast('Backup restored');}catch(e){UI.toast('Could not read that file.');}};r.readAsText(f);},
-  async cloudSave(){try{await this.fb.firestore().collection('sites').doc('artsy-knots').set({data:this.state,updated:Date.now()});}catch(e){console.warn('cloud',e);}}
+  async cloudSave(){try{await this.fb.firestore().collection('sites').doc('artsy-knots').set({data:this.state,updated:Date.now()});}catch(e){console.warn('cloud',e);}},
+  async cloudLoad(){
+    if(!this.fb)return;
+    try{
+      const doc=await this.fb.firestore().collection('sites').doc('artsy-knots').get();
+      if(doc.exists){const d=doc.data().data;if(d){this.state=this._mg(DEFAULTS,d);try{localStorage.setItem(LS,JSON.stringify(this.state));}catch(e){}Render.all();}}
+    }catch(e){console.warn('cloudLoad',e);}
+  }
 };
 
 /* ── RENDER ── */
@@ -710,7 +728,8 @@ function boot(){
   Store.load();
   if(navigator.hardwareConcurrency<=2){document.body.dataset.lowperf='true';}
   document.body.dataset.bg=Store.state.layout.bgMode||'caustic';
-  if(Store.state.config.published&&Store.state.config.cloud&&Store.state.config.firebase)Settings.initFirebase(Store.state.config.firebase);
+  if(!Store.state.config.firebase){Store.state.config.firebase=FIREBASE_CONFIG;Store.state.config.cloud=true;}
+  if(Settings.initFirebase(Store.state.config.firebase))Store.cloudLoad();
   Physics.neuralOn=(Store.state.layout.view!=='glass');
   initIntro();
   Render.all();
