@@ -61,6 +61,7 @@
   <span class="eyebrow"><span class="dot"></span><span id="heroEyebrow">Handmade in Nairobi · one of a kind</span></span>
   <h1 id="heroTitle">Texture you can <em>feel</em>, art you can hold.</h1>
   <p class="lede" id="heroLede">Hand-knotted mats, tufted rugs, crochet bags, canvas works and resin pieces — each made slowly by Bernice Wairimu.</p>
+  <div class="hero-image reveal" id="heroImage"></div>
   <div class="hero-cta">
     <a href="#gallery" class="btn btn-primary">Explore the collection <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     <a href="#about" class="btn btn-glass">Meet Bernice</a>
@@ -215,6 +216,10 @@
       <div class="field"><label>Hero eyebrow</label><input class="input" id="f_heroEyebrow" oninput="Edit.copy()"></div>
       <div class="field"><label>Hero headline <span class="hint">*stars* = italic.</span></label><input class="input" id="f_heroTitle" oninput="Edit.copy()"></div>
       <div class="field"><label>Hero subtitle</label><textarea class="textarea" id="f_heroLede" oninput="Edit.copy()"></textarea></div>
+      <div class="field"><label>Hero image <span class="hint">Shown at the top of the page, first thing visitors see.</span></label>
+        <label class="drop-zone">Tap to upload hero image<input type="file" accept="image/*" style="display:none" onchange="Edit.heroImageFile(event)"></label>
+        <input class="input" id="f_heroImage" oninput="Edit.copy()" placeholder="…or paste an image link" style="margin-top:8px">
+      </div>
       <div class="field"><label>About heading</label><input class="input" id="f_aboutHeading" oninput="Edit.copy()"></div>
       <div class="field"><label>Your byline</label><input class="input" id="f_aboutBy" oninput="Edit.copy()"></div>
       <div class="field"><label>What art is to you <span class="hint">Your story. One paragraph per line.</span></label><textarea class="textarea" id="f_aboutBody" style="min-height:130px" oninput="Edit.copy()"></textarea></div>
